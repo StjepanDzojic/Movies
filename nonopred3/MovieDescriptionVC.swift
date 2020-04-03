@@ -13,16 +13,54 @@ class MovieDescriptionVC: UIViewController {
     
     
     var movieImageView = UIImageView()
-    var movieTitleLabel = UILabel()
-    var movieGenreLabel = UILabel()
-    var movieDirectorLabel = UILabel()
-    var movieDescriptionLabel = UILabel()
+    var movieTitleLabel : UILabel = {
+        let movieTitleLabel = UILabel()
+        movieTitleLabel.numberOfLines = 0
+        movieTitleLabel.adjustsFontSizeToFitWidth = true
+        movieTitleLabel.font = UIFont.init(name: "Quicksand-Medium", size: 29)
+        movieTitleLabel.textColor = .white
+        
+        //isto mi ne radi font i velicina
+        
+        return movieTitleLabel
+    }()
+    var movieGenreLabel: UILabel = {
+        let movieGenreLabel = UILabel()
+        movieGenreLabel.numberOfLines = 0
+        movieGenreLabel.adjustsFontSizeToFitWidth = true
+        movieGenreLabel.font = UIFont.init(name: "Quicksand-Regular", size: 21)
+        movieGenreLabel.textColor = .white
+        
+        return movieGenreLabel
+    }()
+    var movieDirectorLabel : UILabel = {
+        let movieDirectorLabel = UILabel()
+        movieDirectorLabel.numberOfLines = 0
+        movieDirectorLabel.adjustsFontSizeToFitWidth = true
+        movieDirectorLabel.font = UIFont.init(name: "Quicksand-Regular", size: 21)
+        movieDirectorLabel.textColor = .white
+        
+        return movieDirectorLabel
+    }()
+    var movieDescriptionLabel: UILabel = {
+        let movieDescriptionLabel = UILabel()
+        movieDescriptionLabel.numberOfLines = 0
+        movieDescriptionLabel.adjustsFontSizeToFitWidth = true
+        movieDescriptionLabel.font = UIFont.init(name: "Quicksand-Regular", size: 21)
+        movieDescriptionLabel.textColor = .white
+        
+        return movieDescriptionLabel
+    }()
+    
     var watchedButton: UIButton = {
             let button = UIButton()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(UIImage(named: "watchedButton"), for: .normal)
             button.setImage(UIImage(named: "watchedButtonTaped"), for: .selected)
             return button
+        
+        //nisam napravio da ako stisnem button na 1. controlleru, da mi bude i na drugom, i ne radi mi dobro buttoni na 2.
+        
         }()
     
     var favoriteButton: UIButton = {
@@ -45,6 +83,12 @@ class MovieDescriptionVC: UIViewController {
         
 
         movieImageView.image = image
+        movieTitleLabel.text = titleText
+        movieGenreLabel.text = genreText
+        movieDirectorLabel.text = "Director: \(directorText)"
+        movieDescriptionLabel.text = descriptionText
+
+
         
        
         
@@ -57,14 +101,6 @@ class MovieDescriptionVC: UIViewController {
         movieImageView.addSubview(watchedButton)
         movieImageView.addSubview(favoriteButton)
         
-        
-        
-        configureTitleLabel()
-        configureGenreLabel()
-        configureDirectorLabel()
-        configureDescriptionLabel()
-        
-        
         setupImage()
         setupTitle()
         setupGenre()
@@ -72,54 +108,10 @@ class MovieDescriptionVC: UIViewController {
         setupDescription()
         setupWatched()
         setupFavorite()
-    }
-    
-    /*func set(movie: Movie){
-        movieImageView.image = movie.image
-        movieTitleLabel.text = movie.title
-        movieGenreLabel.text = movie.genre
-        movieDirectorLabel.text = movie.director
-        movieDescriptionLabel.text = movie.description
-    }*/
-    
-    func configureTitleLabel(){
-        movieTitleLabel.text = titleText
-        movieTitleLabel.numberOfLines = 0
-        movieTitleLabel.adjustsFontSizeToFitWidth = true
-        movieTitleLabel.font = UIFont.init(name: "Quicksand-Bold", size: 21)
-        movieTitleLabel.textColor = .white
-       
-       }
-    
-    func configureGenreLabel(){
-        movieGenreLabel.text = genreText
-        movieGenreLabel.numberOfLines = 0
-        movieGenreLabel.adjustsFontSizeToFitWidth = true
-        movieGenreLabel.font = UIFont.init(name: "Quicksand-Bold", size: 15)
-        movieGenreLabel.textColor = .white
         
+        watchedButton.addTarget(self, action: #selector(watchedButtonTapped), for: .touchUpInside)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
     }
-    
-    func configureDirectorLabel(){
-            movieDirectorLabel.text = "Director: \(directorText)"
-            movieDirectorLabel.numberOfLines = 0
-            movieDirectorLabel.adjustsFontSizeToFitWidth = true
-            movieDirectorLabel.font = UIFont.init(name: "Quicksand-Bold", size: 21)
-            movieDirectorLabel.textColor = .white
-          
-      }
-    
-    func configureDescriptionLabel(){
-        movieDescriptionLabel.text = descriptionText
-        movieDescriptionLabel.numberOfLines = 0
-        movieDescriptionLabel.adjustsFontSizeToFitWidth = true
-        movieDescriptionLabel.font = UIFont.init(name: "Quicksand-Bold", size: 21)
-        movieDescriptionLabel.textColor = .white
-        
-    }
-    
-    
-    
     
     func setupImage(){
         
@@ -160,9 +152,9 @@ class MovieDescriptionVC: UIViewController {
     }
     
     func setupDescription(){
-        //movieDescriptionLabel.snp.makeConstraints { (maker) in
-            //((maker.top.equalTo(movieDirectorLabel.safeAreaLayoutGuide.snp.bottom).inset(7)
-        //}
+        /*movieDescriptionLabel.snp.makeConstraints { (maker) in
+            ((maker.top.equalTo(movieDirectorLabel.safeAreaLayoutGuide.snp.bottom).inset(7)
+        }*/
         movieDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         movieDescriptionLabel.topAnchor.constraint(equalTo: movieDirectorLabel.bottomAnchor, constant: 7).isActive = true
         movieDescriptionLabel.leadingAnchor.constraint(equalTo: view
@@ -174,17 +166,16 @@ class MovieDescriptionVC: UIViewController {
     
     func setupWatched(){
         watchedButton.translatesAutoresizingMaskIntoConstraints = false
-        watchedButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 46).isActive = true
-        watchedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -75).isActive = true
-        watchedButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 284).isActive = true
+        watchedButton.topAnchor.constraint(equalTo: movieImageView.topAnchor, constant: 46).isActive = true
+        watchedButton.trailingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: -75).isActive = true
+        watchedButton.leadingAnchor.constraint(equalTo: movieImageView.leadingAnchor, constant: 284).isActive = true
     }
     
     func setupFavorite(){
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 46).isActive = true
-        favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
-        favoriteButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 325).isActive = true
-    }
+        favoriteButton.topAnchor.constraint(equalTo: movieImageView.topAnchor, constant: 46).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: -15).isActive = true
+        favoriteButton.leadingAnchor.constraint(equalTo: watchedButton.trailingAnchor, constant: 24).isActive = true    }
     
     @objc func watchedButtonTapped(){
         if watchedButton.isSelected == true {

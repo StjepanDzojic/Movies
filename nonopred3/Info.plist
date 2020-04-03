@@ -41,10 +41,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Quicksand-Regular.tff</string>
-		<string>Quicksand-Medium.tff</string>
-		<string>Quicksand-Light.tff</string>
-		<string>Quicksand-Bold.tff</string>
+		<string>Quicksand-Regular.ttf</string>
+		<string>Quicksand-Medium.ttf</string>
+		<string>Quicksand-Light.ttf</string>
+		<string>Quicksand-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

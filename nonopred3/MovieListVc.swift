@@ -72,6 +72,9 @@ extension MovieListVc: UITableViewDelegate, UITableViewDataSource{
         vc.directorText = item.director
         vc.descriptionText = item.description
         
+        //puno mi je bolja kak su ostali to napravili pa cu pitat da mi
+        //objasne, jer ovaj moj nacin nije bas najbolji
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -10,16 +10,50 @@ import UIKit
 
 class MovieCell: UITableViewCell {
     
-    var container = UIView()
+    var container : UIView = {
+        let container = UIView()
+        container.backgroundColor = .init(red: 0.11, green: 0.11, blue: 0.118, alpha: 1)
+        container.layer.cornerRadius = 20
+        container.clipsToBounds = true
+        
+        return container
+    }()
+    
     var movieImageView = UIImageView()
-    var movieTitleLabel = UILabel()
-    var movieGenreLabel = UILabel()
-    var movieYearLabel = UILabel()
+    
+    var movieTitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.font = UIFont.init(name: "Quicksand-Bold", size: 17)
+        label.textColor = .white
+        //ne radi mi font i velicina, ne radi mi ni u jednom labelu
+        return label
+    }()
+    var movieGenreLabel: UILabel = {
+        let movieGenreLabel = UILabel()
+        movieGenreLabel.numberOfLines = 0
+        movieGenreLabel.adjustsFontSizeToFitWidth = true
+        movieGenreLabel.font = UIFont.init(name: "Quicksand-Bold", size: 15)
+        movieGenreLabel.textColor = .white
+        
+        return movieGenreLabel
+    }()
+    var movieYearLabel : UILabel = {
+        let movieYearLabel = UILabel()
+        movieYearLabel.numberOfLines = 0
+        movieYearLabel.adjustsFontSizeToFitWidth = true
+        movieYearLabel.font = UIFont.init(name: "Quicksand-Bold", size: 21)
+        movieYearLabel.textColor = .white
+        
+        return movieYearLabel
+    }()
     var watchedButton: UIButton = {
             let button = UIButton()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(UIImage(named: "watchedButton"), for: .normal)
             button.setImage(UIImage(named: "watchedButtonTaped"), for: .selected)
+        
             return button
         }()
     
@@ -52,13 +86,7 @@ class MovieCell: UITableViewCell {
         container.addSubview(watchedButton)
         container.addSubview(favoriteButton)
         
-        configureContainer()
-        configureImageView()
-        configureTitleLabel()
-        configureGenreLabel()
-        configureYearLabel()
-       
-        
+
         
         setupContainer()
         setupTitle()
@@ -86,17 +114,6 @@ class MovieCell: UITableViewCell {
     }
     
     
-    
-    
-
-    
-    func configureContainer(){
-        container.backgroundColor = .init(red: 0.11, green: 0.11, blue: 0.118, alpha: 1)
-        container.layer.cornerRadius = 20
-        container.clipsToBounds = true
-    }
-    
-    
     let gradientLayer = CAGradientLayer()
     
     override func layoutSubviews() {
@@ -119,34 +136,8 @@ class MovieCell: UITableViewCell {
         setupGradientLayer()
           
        }
-    
-    
-    func configureTitleLabel(){
-        movieTitleLabel.numberOfLines = 0
-        movieTitleLabel.adjustsFontSizeToFitWidth = true
-        movieTitleLabel.font = UIFont.init(name: "Quicksand-Bold", size: 17)
-        movieTitleLabel.textColor = .white
-       }
-    
-    func configureGenreLabel(){
-        movieGenreLabel.numberOfLines = 0
-        movieGenreLabel.adjustsFontSizeToFitWidth = true
-        movieGenreLabel.font = UIFont.init(name: "Quicksand-Bold", size: 15)
-        movieGenreLabel.textColor = .white
-        
-    }
-    
-    func configureYearLabel(){
-          movieYearLabel.numberOfLines = 0
-          movieYearLabel.adjustsFontSizeToFitWidth = true
-          movieYearLabel.font = UIFont.init(name: "Quicksand-Bold", size: 21)
-          movieYearLabel.textColor = .white
-          
-      }
-    
-   
-      
-    
+
+
         func setupContainer(){
             container.translatesAutoresizingMaskIntoConstraints = false
             container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
