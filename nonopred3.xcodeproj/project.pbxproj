@@ -11,6 +11,10 @@
 		455033DFD62B1F0B7903A381 /* Pods_nonopred3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CA59D123794FBA4F0BB647 /* Pods_nonopred3Tests.framework */; };
 		A09C82E676C01BC39F0B4675 /* Pods_nonopred3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D261708E3FA408014338EC /* Pods_nonopred3.framework */; };
 		F38A62192433834A00814347 /* MovieDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A62182433834A00814347 /* MovieDescriptionVC.swift */; };
+		F38A621F2438866A00814347 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F38A621A24375B5200814347 /* Quicksand-Regular.ttf */; };
+		F38A62202438866F00814347 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F38A621B24375B6500814347 /* Quicksand-Medium.ttf */; };
+		F38A62212438867200814347 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F38A621C24375B6D00814347 /* Quicksand-Light.ttf */; };
+		F38A62222438867600814347 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F38A621D24375B7200814347 /* Quicksand-Bold.ttf */; };
 		F395F2AF242CEAC0009A922A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F395F2AE242CEAC0009A922A /* AppDelegate.swift */; };
 		F395F2B8242CEAC2009A922A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F395F2B7242CEAC2009A922A /* Assets.xcassets */; };
 		F395F2BB242CEAC2009A922A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F395F2B9242CEAC2009A922A /* LaunchScreen.storyboard */; };
@@ -297,7 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F395F2BB242CEAC2009A922A /* LaunchScreen.storyboard in Resources */,
+				F38A62222438867600814347 /* Quicksand-Bold.ttf in Resources */,
+				F38A62202438866F00814347 /* Quicksand-Medium.ttf in Resources */,
+				F38A621F2438866A00814347 /* Quicksand-Regular.ttf in Resources */,
 				F395F2B8242CEAC2009A922A /* Assets.xcassets in Resources */,
+				F38A62212438867200814347 /* Quicksand-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
